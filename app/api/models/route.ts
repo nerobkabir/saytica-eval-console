@@ -65,5 +65,59 @@ export async function GET() {
   const filePath = path.join(process.cwd(), "data", "models.json");
   const raw = JSON.parse(fs.readFileSync(filePath, "utf-8"));
   const models = cleanModels(raw);
-  return NextResponse.json(models);
+
+  // Tag duplicates
+  const dupGroups = detectDuplicates(models);
+  const dupIds = new Set(dupGroups.flat());
+  for (const m of models) {
+    if (dupIds.has(m.id)) m.flags.push("possible_duplicate");
+  }
+
+  const insights = buildInsights(models);
+  return NextResponse.json({ models, insights });
+}
+
+export interface ModelInsights {
+  bestAccuracy: Model | null;
+  fastestLatency: Model | null;
+  cheapest: Model | null;
+  missingDataCount: number;
+  duplicateGroups: string[][];
+}
+
+function detectDuplicates(models: Model[]): string[][] {
+  const groups = new Map<string, Model[]>();
+  for (const m of models) {
+    const key = `${m.provider.toLowerCase()}::${m.accuracy}::${m.evaluatedAt}`;
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key)!.push(m);
+  }
+  return Array.from(groups.values())
+    .filter((g) => g.length > 1)
+    .map((g) => g.map((m) => m.id));
+}
+
+function buildInsights(models: Model[]): ModelInsights {
+  const withAccuracy = models.filter((m) => m.accuracy !== null);
+  const withLatency = models.filter((m) => m.latencyMs !== null && !m.flags.includes("latency_suspect"));
+  const withCost = models.filter((m) => m.costPer1k !== null);
+
+  const bestAccuracy = withAccuracy.length
+    ? withAccuracy.reduce((a, b) => (a.accuracy! > b.accuracy! ? a : b))
+    : null;
+  const fastestLatency = withLatency.length
+    ? withLatency.reduce((a, b) => (a.latencyMs! < b.latencyMs! ? a : b))
+    : null;
+  const cheapest = withCost.length
+    ? withCost.reduce((a, b) => (a.costPer1k! <= b.costPer1k! ? a : b))
+    : null;
+
+  const missingDataCount = models.filter(
+    (m) =>
+      m.flags.includes("accuracy_missing") ||
+      m.flags.includes("cost_missing") ||
+      m.flags.includes("date_missing")
+  ).length;
+
+  return { bestAccuracy, fastestLatency, cheapest, missingDataCount, duplicateGroups: detectDuplicates(models) };
 }

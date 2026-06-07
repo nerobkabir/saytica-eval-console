@@ -89,3 +89,13 @@ data/
 - **Single user assumption**: The annotator is hard-coded as `u_annotator`. A real app would have auth and session context.
 - **No tests**: Given the 24-hour window I prioritised a clean, well-reasoned implementation over test coverage. The data-cleaning logic in the API routes is the natural place to start with unit tests.
 - **Deployment**: Optimised for Vercel (`next build && next start`). No Docker needed.
+
+---
+
+## If I had more time
+
+- **Real database** — Replace the in-memory task store with SQLite (via Prisma) so status changes survive server restarts and multiple users don't overwrite each other.
+- **Authentication** — A real annotator login so the Task Board knows *who* is logged in, rather than hard-coding `u_annotator`. JWT or NextAuth would be the natural fit here.
+- **Model comparison chart** — An accuracy vs. cost scatter plot would make the trade-offs far more legible than a table, especially as the number of models grows.
+- **Unit tests** — The data-cleaning logic in the API routes (date parsing, provider normalisation, duplicate detection) is exactly where I'd start with `jest` or `vitest` tests, since that's the code most likely to break silently on new data.
+- **Pagination / streaming** — For a real leaderboard with hundreds of models, I'd add cursor-based pagination on the backend rather than sending everything at once.
