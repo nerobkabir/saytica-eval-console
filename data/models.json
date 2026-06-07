@@ -1,0 +1,11 @@
+[
+  { "id": "m1", "name": "Aurora-7B",      "provider": "OpenForma", "accuracy": 0.871, "latencyMs": 240,  "costPer1k": 0.40, "evaluatedAt": "2026-05-02" },
+  { "id": "m2", "name": "aurora-7b-lite",  "provider": "openforma", "accuracy": 0.871, "latencyMs": 180,  "costPer1k": null, "evaluatedAt": "2026-05-02" },
+  { "id": "m3", "name": "Lingua-Max",      "provider": "Toloka",    "accuracy": null,  "latencyMs": 95,   "costPer1k": 1.20, "evaluatedAt": "02/05/2026" },
+  { "id": "m4", "name": "Vox-Mini",        "provider": "Outlier",   "accuracy": 0.992, "latencyMs": 9999, "costPer1k": 0.05, "evaluatedAt": "2026-04-28" },
+  { "id": "m5", "name": "Polyglot-Base",   "provider": "Mercor",    "accuracy": 0.804, "latencyMs": 310,  "costPer1k": 0.22, "evaluatedAt": "2026-05-10" },
+  { "id": "m6", "name": "  Polyglot-Pro ", "provider": "Mercor",    "accuracy": 0.889, "latencyMs": 420,  "costPer1k": 0.95, "evaluatedAt": "2026-05-11" },
+  { "id": "m7", "name": "Sonnet-Khulna",   "provider": "Saytica",   "accuracy": 0.913, "latencyMs": 205,  "costPer1k": null, "evaluatedAt": null },
+  { "id": "m8", "name": "Echo-Tiny",       "provider": "Outlier",   "accuracy": 0.612, "latencyMs": 60,   "costPer1k": 0.00, "evaluatedAt": "2026-05-01" },
+  { "id": "m9", "name": "Nirvana-13B",     "provider": "Toloka",    "accuracy": 0.945, "latencyMs": 540,  "costPer1k": 2.10, "evaluatedAt": "2026-05-09" }
+]

@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+:root {
+  --bg: #0a0c10;
+  --surface: #111318;
+  --surface-2: #1a1d24;
+  --border: #252830;
+  --border-bright: #353945;
+  --text-primary: #e8eaf0;
+  --text-secondary: #7a7f8e;
+  --text-muted: #4a4f5e;
+  --accent: #4ade80;
+  --accent-dim: #1a3826;
+  --accent-2: #60a5fa;
+  --accent-2-dim: #1a2840;
+  --warn: #f59e0b;
+  --warn-dim: #2d2010;
+  --danger: #f87171;
+  --danger-dim: #2d1010;
+  --pending: #94a3b8;
+  --in-progress: #60a5fa;
+  --done: #4ade80;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: 'DM Sans', sans-serif;
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+.mono { font-family: 'Space Mono', monospace; }
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 0;
+}
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--surface); }
+::-webkit-scrollbar-thumb { background: var(--border-bright); border-radius: 3px; }

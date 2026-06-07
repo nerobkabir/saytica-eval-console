@@ -1,0 +1,16 @@
+[
+  { "id": "t1",  "title": "Bengali sentiment batch #4",   "projectId": "p1", "projectName": "Project Atlas", "clientId": "c1", "assignedTo": "u_annotator", "status": "done" },
+  { "id": "t2",  "title": "Urdu transcription QA",         "projectId": "p1", "projectName": "Project Atlas", "clientId": "c1", "assignedTo": "u_annotator", "status": "in_progress" },
+  { "id": "t3",  "title": "Hindi prompt ranking",          "projectId": "p1", "projectName": "Project Atlas", "clientId": "c1", "assignedTo": "u_annotator", "status": "pending" },
+  { "id": "t4",  "title": "Tamil audio labeling",          "projectId": "p1", "projectName": "Project Atlas", "clientId": "c1", "assignedTo": "u_annotator", "status": "done" },
+  { "id": "t5",  "title": "Sylheti dialect tagging",       "projectId": "p1", "projectName": "Project Atlas", "clientId": "c1", "assignedTo": "u_annotator", "status": "done" },
+  { "id": "t6",  "title": "Pashto safety review",          "projectId": "p1", "projectName": "Project Atlas", "clientId": "c1", "assignedTo": "u_annotator", "status": "in_progress" },
+  { "id": "t7",  "title": "Khmer gold-set check",          "projectId": "p1", "projectName": "Project Atlas", "clientId": "c1", "assignedTo": "u_other",     "status": "pending" },
+  { "id": "t8",  "title": "Amharic transcription",         "projectId": "p1", "projectName": "Project Atlas", "clientId": "c1", "assignedTo": "u_other",     "status": "done" },
+  { "id": "t9",  "title": "Burmese intent labeling",       "projectId": "p2", "projectName": "Project Beta",  "clientId": "c2", "assignedTo": "u_annotator", "status": "pending" },
+  { "id": "t10", "title": "Tigrinya prompt review",        "projectId": "p2", "projectName": "Project Beta",  "clientId": "c2", "assignedTo": "u_annotator", "status": "pending" },
+  { "id": "t11", "title": "Nepali RLHF ranking",           "projectId": "p2", "projectName": "Project Beta",  "clientId": "c2", "assignedTo": "u_other",     "status": "in_progress" },
+  { "id": "t12", "title": "Marathi audio QA",              "projectId": "p2", "projectName": "Project Beta",  "clientId": "c2", "assignedTo": "u_annotator", "status": "done" },
+  { "id": "t13", "title": "Punjabi diarization",           "projectId": "p2", "projectName": "Project Beta",  "clientId": "c2", "assignedTo": "u_annotator", "status": "" },
+  { "id": "t14", "title": "Telugu OCR validation",         "projectId": "p2", "projectName": "Project Beta",  "clientId": "c2", "assignedTo": null,          "status": "pending" }
+]
