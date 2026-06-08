@@ -35,7 +35,6 @@ function cleanModels(raw: unknown[]): Model[] {
     const rawName = String(m.name ?? "").trim();
     if (rawName !== String(m.name ?? "")) flags.push("name_trimmed");
 
-    // Detect suspiciously high latency (9999 sentinel value)
     const latencyMs = typeof m.latencyMs === "number" ? m.latencyMs : null;
     if (latencyMs !== null && latencyMs >= 9999) flags.push("latency_suspect");
 
