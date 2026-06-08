@@ -27,7 +27,6 @@ export default function Navbar() {
           justifyContent: "space-between",
         }}
       >
-        {/* Logo */}
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
           <div
             style={{
@@ -71,7 +70,6 @@ export default function Navbar() {
           </span>
         </div>
 
-        {/* Nav Links */}
         <nav style={{ display: "flex", gap: 4 }}>
           <NavLink href="/" active={path === "/"} label="Leaderboard" />
           <NavLink href="/tasks" active={path === "/tasks"} label="Task Board" />
