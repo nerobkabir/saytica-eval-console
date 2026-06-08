@@ -49,7 +49,7 @@ function cleanTasks(raw: unknown[]): Task[] {
   });
 }
 
-// In-memory store (initialized from file on first load)
+
 let taskStore: Task[] | null = null;
 
 export function getTaskStore(): Task[] {
