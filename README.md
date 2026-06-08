@@ -2,7 +2,7 @@
 
 A small full-stack web app built for the Saytica Software Developer Intern take-home task (Stage 2).
 
-**Live URL:** _TBD after deployment_  
+**Live URL:** https://saytica-eval-console-beta.vercel.app/
 **Stack:** Next.js 14 (App Router) · TypeScript · Tailwind CSS · Lucide icons
 
 ---
