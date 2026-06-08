@@ -15,7 +15,7 @@ export interface Model {
 
 function parseDate(raw: string | null): string | null {
   if (!raw) return null;
-  // Handle DD/MM/YYYY format
+  
   const ddmmyyyy = raw.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
   if (ddmmyyyy) {
     return `${ddmmyyyy[3]}-${ddmmyyyy[2]}-${ddmmyyyy[1]}`;
