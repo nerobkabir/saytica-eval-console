@@ -450,7 +450,7 @@ function TaskRow({
   );
 }
 
-// ── Client View ─────────────────────────────────────────────────
+// Client View 
 function ClientView({
   projects,
   overallPct,
