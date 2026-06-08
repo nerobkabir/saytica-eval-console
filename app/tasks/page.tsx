@@ -40,7 +40,6 @@ const STATUS_META: Record<TaskStatus, { label: string; color: string; bg: string
 
 const ME = "u_annotator";
 
-// Group tasks by project
 function groupByProject(tasks: Task[]) {
   const map = new Map<string, { projectId: string; projectName: string; tasks: Task[] }>();
   for (const t of tasks) {
@@ -95,11 +94,9 @@ export default function TaskBoardPage() {
     }
   }
 
-  // Annotator: only tasks assigned to me
   const myTasks = tasks.filter((t) => t.assignedTo === ME);
   const myProjects = groupByProject(myTasks);
 
-  // Client: all tasks across all projects (read-only)
   const allProjects = groupByProject(tasks);
 
   const totalDone = tasks.filter((t) => t.status === "done").length;
@@ -108,7 +105,7 @@ export default function TaskBoardPage() {
 
   return (
     <div style={{ maxWidth: 1200, margin: "0 auto", padding: "40px 24px" }}>
-      {/* Header */}
+
       <div style={{ marginBottom: 32 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
           <span className="mono" style={{ fontSize: 11, color: "var(--accent)", letterSpacing: "0.12em" }}>
@@ -127,7 +124,6 @@ export default function TaskBoardPage() {
             </p>
           </div>
 
-          {/* Role toggle */}
           <div
             style={{
               background: "var(--surface)",
@@ -200,7 +196,6 @@ function RoleBtn({
   );
 }
 
-// ── Annotator View ──────────────────────────────────────────────
 function AnnotatorView({
   projects,
   onAdvance,
@@ -229,7 +224,6 @@ function AnnotatorView({
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-      {/* Stats bar */}
       <AnnotatorStats projects={projects} />
 
       {projects.map((proj) => (
@@ -364,10 +358,8 @@ function TaskRow({
       onMouseLeave={(e) => ((e.currentTarget as HTMLDivElement).style.background = "")}
     >
       <div style={{ display: "flex", alignItems: "center", gap: 12, flex: 1, minWidth: 0 }}>
-        {/* Status icon */}
         <span style={{ color: meta.color, flexShrink: 0 }}>{meta.icon}</span>
 
-        {/* Title */}
         <span
           style={{
             fontSize: 14,
@@ -381,7 +373,6 @@ function TaskRow({
           {task.title}
         </span>
 
-        {/* Flags */}
         {task.flags.includes("status_unknown") && (
           <span title="Unknown status — treated as pending">
             <AlertTriangle size={13} style={{ color: "var(--warn)", flexShrink: 0 }} />
@@ -390,7 +381,6 @@ function TaskRow({
       </div>
 
       <div style={{ display: "flex", alignItems: "center", gap: 10, flexShrink: 0 }}>
-        {/* Status badge */}
         <span
           style={{
             fontSize: 11,
