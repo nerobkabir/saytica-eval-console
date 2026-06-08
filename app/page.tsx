@@ -80,7 +80,6 @@ export default function LeaderboardPage() {
 
   return (
     <div style={{ maxWidth: 1200, margin: "0 auto", padding: "40px 24px" }}>
-      {/* Header */}
       <div style={{ marginBottom: 32 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
           <span className="mono" style={{ fontSize: 11, color: "var(--accent)", letterSpacing: "0.12em", textTransform: "uppercase" }}>
@@ -95,7 +94,6 @@ export default function LeaderboardPage() {
         </p>
       </div>
 
-      {/* ── INSIGHTS BANNER ── */}
       {!loading && insights && (
         <div style={{ marginBottom: 28 }}>
           <div style={{ fontSize: 11, color: "var(--text-muted)", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 10 }}>
@@ -103,7 +101,6 @@ export default function LeaderboardPage() {
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 12 }}>
 
-            {/* Best Accuracy */}
             <InsightCard
               icon={<Trophy size={15} />}
               iconColor="var(--accent)"
@@ -113,7 +110,6 @@ export default function LeaderboardPage() {
               sub={insights.bestAccuracy?.name ?? "—"}
             />
 
-            {/* Fastest (excluding sentinel) */}
             <InsightCard
               icon={<Zap size={15} />}
               iconColor="#facc15"
@@ -123,7 +119,6 @@ export default function LeaderboardPage() {
               sub={insights.fastestLatency?.name ?? "—"}
             />
 
-            {/* Cheapest */}
             <InsightCard
               icon={<DollarSign size={15} />}
               iconColor="var(--accent-2)"
@@ -151,7 +146,6 @@ export default function LeaderboardPage() {
             />
           </div>
 
-          {/* Duplicate warning */}
           {insights.duplicateGroups.length > 0 && (
             <div style={{
               marginTop: 12,
@@ -179,7 +173,6 @@ export default function LeaderboardPage() {
         </div>
       )}
 
-      {/* Search + Stats */}
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16, marginBottom: 20, flexWrap: "wrap" }}>
         <div style={{ position: "relative", flex: "0 0 auto", minWidth: 280 }}>
           <Search size={14} style={{ position: "absolute", left: 12, top: "50%", transform: "translateY(-50%)", color: "var(--text-muted)" }} />
@@ -205,7 +198,6 @@ export default function LeaderboardPage() {
         </span>
       </div>
 
-      {/* Data quality notice */}
       <div style={{
         background: "var(--warn-dim)",
         border: "1px solid rgba(245,158,11,0.2)",
@@ -226,7 +218,6 @@ export default function LeaderboardPage() {
         </span>
       </div>
 
-      {/* Table */}
       <div style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 12, overflow: "hidden" }}>
         {loading ? (
           <div style={{ padding: 48, textAlign: "center", color: "var(--text-muted)" }}>Loading models…</div>
@@ -257,7 +248,6 @@ export default function LeaderboardPage() {
         )}
       </div>
 
-      {/* Legend */}
       <div style={{ marginTop: 16, display: "flex", gap: 20, flexWrap: "wrap" }}>
         {[
           { color: "var(--accent)", label: "High accuracy (≥ 90%)" },
@@ -274,7 +264,6 @@ export default function LeaderboardPage() {
   );
 }
 
-// ── Insight Card ─────────────────────────────────────────────────
 function InsightCard({ icon, iconColor, iconBg, label, value, sub, warn }: {
   icon: React.ReactNode;
   iconColor: string;
@@ -317,7 +306,6 @@ function InsightCard({ icon, iconColor, iconBg, label, value, sub, warn }: {
   );
 }
 
-// ── Table Header ─────────────────────────────────────────────────
 function Th({ label, sortKey, current, dir, onSort }: {
   label: string;
   sortKey: SortKey | null;
@@ -350,7 +338,6 @@ function Th({ label, sortKey, current, dir, onSort }: {
   );
 }
 
-// ── Model Row ─────────────────────────────────────────────────────
 function ModelRow({ model: m, rank }: { model: Model; rank: number }) {
   const [showFlags, setShowFlags] = useState(false);
   const hasFlags = m.flags.length > 0;
@@ -370,7 +357,6 @@ function ModelRow({ model: m, rank }: { model: Model; rank: number }) {
         onMouseLeave={(e) => ((e.currentTarget as HTMLTableRowElement).style.background = "")}
         onClick={() => hasFlags && setShowFlags((v) => !v)}
       >
-        {/* Model name */}
         <td style={{ padding: "14px 16px" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
             <span className="mono" style={{ fontSize: 11, color: "var(--text-muted)", width: 20, textAlign: "right" }}>{rank}</span>
@@ -398,7 +384,6 @@ function ModelRow({ model: m, rank }: { model: Model; rank: number }) {
           </div>
         </td>
 
-        {/* Provider */}
         <td style={{ padding: "14px 16px" }}>
           <span style={{
             fontSize: 12,
@@ -412,7 +397,6 @@ function ModelRow({ model: m, rank }: { model: Model; rank: number }) {
           </span>
         </td>
 
-        {/* Accuracy */}
         <td style={{ padding: "14px 16px" }}>
           {m.accuracy !== null ? (
             <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
@@ -428,7 +412,6 @@ function ModelRow({ model: m, rank }: { model: Model; rank: number }) {
           )}
         </td>
 
-        {/* Latency */}
         <td style={{ padding: "14px 16px" }}>
           {m.latencyMs !== null ? (
             <span className="mono" style={{ fontSize: 13, color: m.flags.includes("latency_suspect") ? "var(--warn)" : "var(--text-secondary)" }}>
@@ -439,7 +422,6 @@ function ModelRow({ model: m, rank }: { model: Model; rank: number }) {
           )}
         </td>
 
-        {/* Cost */}
         <td style={{ padding: "14px 16px" }}>
           {m.costPer1k !== null ? (
             <span className="mono" style={{ fontSize: 13, color: "var(--text-secondary)" }}>
@@ -450,13 +432,11 @@ function ModelRow({ model: m, rank }: { model: Model; rank: number }) {
           )}
         </td>
 
-        {/* Evaluated At */}
         <td style={{ padding: "14px 16px" }}>
           <span style={{ fontSize: 13, color: "var(--text-muted)" }}>{m.evaluatedAt ?? "—"}</span>
         </td>
       </tr>
 
-      {/* Flags expanded row */}
       {showFlags && hasFlags && (
         <tr>
           <td colSpan={6} style={{ padding: "10px 52px", background: "var(--warn-dim)", borderBottom: "1px solid var(--border)" }}>
